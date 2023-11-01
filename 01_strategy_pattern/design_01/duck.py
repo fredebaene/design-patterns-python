@@ -28,6 +28,10 @@ class Duck(ABC):
     @property
     def fly_behavior(self):
         return self._fly_behavior
+    
+    @property
+    def quack_behavior(self):
+        return self._quack_behavior
 
     @abstractmethod
     def display(self) -> None:
