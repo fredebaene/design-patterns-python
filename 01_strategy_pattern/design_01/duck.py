@@ -14,16 +14,17 @@ from _quack_behavior import (
     NoQuacking,
     SqueakQuacking,
 )
+from typing import Union
 
 
 class Duck(ABC):
     def __init__(
         self,
-        fly_behavior: IFlyBehavior = None,
-        quack_behavior: IQuackBehavior = None,
+        fly_behavior: Union[IFlyBehavior, None] = None,
+        quack_behavior: Union[IQuackBehavior, None] = None,
     ):
-        self._fly_behavior: IFlyBehavior = fly_behavior
-        self._quack_behavior: IQuackBehavior = quack_behavior
+        self._fly_behavior = fly_behavior
+        self._quack_behavior = quack_behavior
 
     @property
     def fly_behavior(self):
@@ -63,8 +64,8 @@ class Duck(ABC):
 class MallardDuck(Duck):
     def __init__(
         self,
-        fly_behavior: IFlyBehavior = None,
-        quack_behavior: IQuackBehavior = None,
+        fly_behavior: Union[IFlyBehavior, None] = None,
+        quack_behavior: Union[IQuackBehavior, None] = None,
     ):
         super().__init__(fly_behavior, quack_behavior)
 
@@ -75,8 +76,8 @@ class MallardDuck(Duck):
 class RubberDuck(Duck):
     def __init__(
         self,
-        fly_behavior: IFlyBehavior = None,
-        quack_behavior: IQuackBehavior = None,
+        fly_behavior: Union[IFlyBehavior, None] = None,
+        quack_behavior: Union[IQuackBehavior, None] = None,
     ):
         super().__init__(fly_behavior, quack_behavior)
 
@@ -87,8 +88,8 @@ class RubberDuck(Duck):
 class DecoyDuck(Duck):
     def __init__(
         self,
-        fly_behavior: IFlyBehavior = None,
-        quack_behavior: IQuackBehavior = None,
+        fly_behavior: Union[IFlyBehavior, None] = None,
+        quack_behavior: Union[IQuackBehavior, None] = None,
     ):
         super().__init__(fly_behavior, quack_behavior)
 
