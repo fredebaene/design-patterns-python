@@ -143,6 +143,9 @@ class SoldOutState:
     def refill_gumballs(self, number_of_gumballs: int) -> None:
         print("Refilling gumballs!")
         self.gumball_machine.number_of_gumballs += number_of_gumballs
+        self.gumball_machine.set_state(
+            self.gumball_machine._no_quarter_state
+        )
 
 
 class WinnerState:
