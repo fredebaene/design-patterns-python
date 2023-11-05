@@ -10,6 +10,7 @@ each state of the machine to a particular class.
 
 
 from __future__ import annotations
+import random
 from typing import Protocol, runtime_checkable, TYPE_CHECKING
 
 
@@ -42,7 +43,9 @@ class NoQuarterState:
 
     def insert_quarter(self) -> None:
         print("Your quarter is accepted!")
-        self.gumball_machine.set_state(self.gumball_machine._has_quarter_state)
+        self.gumball_machine.set_state(
+            self.gumball_machine._has_quarter_state
+        )
 
     def eject_quarter(self) -> None:
         print("No! You have not inserted a quarter yet.")
@@ -63,11 +66,20 @@ class HasQuarterState:
 
     def eject_quarter(self) -> None:
         print("Your quarter is being ejected!")
-        self.gumball_machine.set_state(self.gumball_machine._no_quarter_state)
+        self.gumball_machine.set_state(
+            self.gumball_machine._no_quarter_state
+        )
 
     def turn_crank(self) -> None:
         print("You will get a gumball!")
-        self.gumball_machine.set_state(self.gumball_machine._sold_gumball_state)
+        if random.randint(1, 10) == 5:
+            self.gumball_machine.set_state(
+                self.gumball_machine._winner_state
+            )
+        else:
+            self.gumball_machine.set_state(
+                self.gumball_machine._sold_gumball_state
+            )
 
     def _dispense_gumball(self) -> None:
         print("No! You must turn the crank to get a gumball.")
@@ -90,9 +102,13 @@ class SoldGumballState:
         print("Dispensing a gumball!")
         self.gumball_machine.release_gumball()
         if self.gumball_machine.number_of_gumballs > 0:
-            self.gumball_machine.set_state(self.gumball_machine._no_quarter_state)
+            self.gumball_machine.set_state(
+                self.gumball_machine._no_quarter_state
+            )
         else:
-            self.gumball_machine.set_state(self.gumball_machine._sold_out_state)
+            self.gumball_machine.set_state(
+                self.gumball_machine._sold_out_state
+            )
 
 
 class SoldOutState:
@@ -110,3 +126,33 @@ class SoldOutState:
 
     def _dispense_gumball(self) -> None:
         print("Sold out! Gumballs are no longer available.")
+
+
+class WinnerState:
+    def __init__(self, gumball_machine: GumballMachine):
+        self.gumball_machine = gumball_machine
+
+    def insert_quarter(self) -> None:
+        print("No! You are already getting two gumballs.")
+
+    def eject_quarter(self) -> None:
+        print("No! You are already getting two gumballs.")
+
+    def turn_crank(self) -> None:
+        print("No! You are already getting two gumballs.")
+
+    def _dispense_gumball(self) -> None:
+        print("Dispensing a gumball!")
+        self.gumball_machine.release_gumball()
+        if self.gumball_machine.number_of_gumballs > 0:
+            print("You are getting a second gumball!")
+            self.gumball_machine.release_gumball()
+
+        if self.gumball_machine.number_of_gumballs > 0:
+            self.gumball_machine.set_state(
+                self.gumball_machine._no_quarter_state
+            )
+        else:
+            self.gumball_machine.set_state(
+                self.gumball_machine._sold_out_state
+            )

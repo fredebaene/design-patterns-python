@@ -7,6 +7,7 @@ from states import (
     HasQuarterState,
     SoldGumballState,
     SoldOutState,
+    WinnerState,
 )
 
 
@@ -25,6 +26,7 @@ class GumballMachine:
         self._has_quarter_state = HasQuarterState(self)
         self._sold_gumball_state = SoldGumballState(self)
         self._sold_out_state = SoldOutState(self)
+        self._winner_state = WinnerState(self)
 
         self.number_of_gumballs = number_of_gumballs
         if self.number_of_gumballs > 0:
