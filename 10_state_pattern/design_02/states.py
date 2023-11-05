@@ -42,7 +42,7 @@ class NoQuarterState:
 
     def insert_quarter(self) -> None:
         print("Your quarter is accepted!")
-        self.gumball_machine.set_state(HasQuarterState)
+        self.gumball_machine.set_state(self.gumball_machine._has_quarter_state)
 
     def eject_quarter(self) -> None:
         print("No! You have not inserted a quarter yet.")
@@ -63,11 +63,11 @@ class HasQuarterState:
 
     def eject_quarter(self) -> None:
         print("Your quarter is being ejected!")
-        self.gumball_machine.set_state(NoQuarterState)
+        self.gumball_machine.set_state(self.gumball_machine._no_quarter_state)
 
     def turn_crank(self) -> None:
         print("You will get a gumball!")
-        self.gumball_machine.set_state(SoldGumballState)
+        self.gumball_machine.set_state(self.gumball_machine._sold_gumball_state)
 
     def _dispense_gumball(self) -> None:
         print("No! You must turn the crank to get a gumball.")
@@ -90,9 +90,9 @@ class SoldGumballState:
         print("Dispensing a gumball!")
         self.gumball_machine.release_gumball()
         if self.gumball_machine.number_of_gumballs > 0:
-            self.gumball_machine.set_state(NoQuarterState)
+            self.gumball_machine.set_state(self.gumball_machine._no_quarter_state)
         else:
-            self.gumball_machine.set_state(SoldOutState)
+            self.gumball_machine.set_state(self.gumball_machine._sold_out_state)
 
 
 class SoldOutState:

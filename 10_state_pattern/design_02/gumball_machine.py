@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 
 
-from states import State, NoQuarterState, SoldOutState
+from states import (
+    State,
+    NoQuarterState,
+    HasQuarterState,
+    SoldGumballState,
+    SoldOutState,
+)
 
 
 class GumballMachine:
@@ -15,11 +21,16 @@ class GumballMachine:
         if number_of_gumballs < 0:
             raise ValueError(err_msg)
         
+        self._no_quarter_state = NoQuarterState(self)
+        self._has_quarter_state = HasQuarterState(self)
+        self._sold_gumball_state = SoldGumballState(self)
+        self._sold_out_state = SoldOutState(self)
+
         self.number_of_gumballs = number_of_gumballs
         if self.number_of_gumballs > 0:
-            self.machine_state = NoQuarterState(self)
+            self.machine_state = self._no_quarter_state
         else:
-            self.machine_state = SoldOutState(self)
+            self.machine_state = self._sold_out_state
 
     def insert_quarter(self) -> None:
         self.machine_state.insert_quarter()
@@ -32,7 +43,7 @@ class GumballMachine:
         self.machine_state._dispense_gumball()
 
     def set_state(self, machine_state: State) -> None:
-        self.machine_state = machine_state(self)
+        self.machine_state = machine_state
 
     def release_gumball(self) -> None:
         self.number_of_gumballs -= 1
