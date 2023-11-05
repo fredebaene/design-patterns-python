@@ -49,3 +49,15 @@ class GumballMachine:
 
     def release_gumball(self) -> None:
         self.number_of_gumballs -= 1
+
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        err_msg = (
+            "The argument passed to `number_of_gumballs` must be a "
+            "non-negative integer."
+        )
+        if not isinstance(number_of_gumballs, int):
+            raise TypeError(err_msg)
+        if number_of_gumballs < 0:
+            raise ValueError(err_msg)
+        
+        self.machine_state.refill_gumballs(number_of_gumballs)

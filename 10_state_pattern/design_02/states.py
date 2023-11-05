@@ -36,6 +36,9 @@ class State(Protocol):
     def _dispense_gumball(self) -> None:
         ...
 
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        ...
+
 
 class NoQuarterState:
     def __init__(self, gumball_machine: GumballMachine):
@@ -55,6 +58,10 @@ class NoQuarterState:
 
     def _dispense_gumball(self) -> None:
         print("No! You have not inserted a quarter yet.")
+
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        print("Refilling gumballs!")
+        self.gumball_machine.number_of_gumballs += number_of_gumballs
 
 
 class HasQuarterState:
@@ -84,6 +91,9 @@ class HasQuarterState:
     def _dispense_gumball(self) -> None:
         print("No! You must turn the crank to get a gumball.")
 
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        print("Cannot refill gumballs while holding a quarter!")
+
 
 class SoldGumballState:
     def __init__(self, gumball_machine: GumballMachine):
@@ -110,6 +120,9 @@ class SoldGumballState:
                 self.gumball_machine._sold_out_state
             )
 
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        print("Cannot refill gumballs while selling a gumball!")
+
 
 class SoldOutState:
     def __init__(self, gumball_machine: GumballMachine):
@@ -126,6 +139,10 @@ class SoldOutState:
 
     def _dispense_gumball(self) -> None:
         print("Sold out! Gumballs are no longer available.")
+
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        print("Refilling gumballs!")
+        self.gumball_machine.number_of_gumballs += number_of_gumballs
 
 
 class WinnerState:
@@ -156,3 +173,6 @@ class WinnerState:
             self.gumball_machine.set_state(
                 self.gumball_machine._sold_out_state
             )
+
+    def refill_gumballs(self, number_of_gumballs: int) -> None:
+        print("Cannot refill gumballs while selling a gumball!")
