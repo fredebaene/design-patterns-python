@@ -71,7 +71,7 @@ class HasQuarterState:
         self.gumball_machine._dispense_gumball()
 
     def _dispense_gumball(self) -> None:
-        print("No! You are getting a gumball.")
+        print("No! You must turn the crank to get a gumball.")
 
 
 class SoldGumballState:
