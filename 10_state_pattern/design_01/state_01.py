@@ -77,7 +77,7 @@ class GumballMachine:
             print("No! You are already getting a gumball.")
 
         elif self.machine_state == MachineState.SOLD_OUT:
-            print("Sold out! Quarters are no longer accepted.")
+            print("Sold out! Gumballs are no longer sold.")
 
     def _dispense_gumball(self) -> None:
         """The behavior of the machine when dispensing a gumball."""
