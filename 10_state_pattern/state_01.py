@@ -43,15 +43,15 @@ class GumballMachine:
             print("No! You cannot insert a quarter twice.")
 
         elif self.machine_state == MachineState.SOLD_GUMBALL:
-            print("No! First, you will get a gumball.")
+            print("No! You are already getting a gumball.")
 
         elif self.machine_state == MachineState.SOLD_OUT:
-            print("No! There are no more gumballs.")
+            print("Sold out! Quarters are no longer accepted.")
 
     def eject_quarter(self) -> None:
         """The behavior of the machine when a quarter is ejected."""
         if self.machine_state == MachineState.NO_QUARTER:
-            print("No! There is no quarter to eject.")
+            print("No! You have not inserted a quarter yet.")
 
         elif self.machine_state == MachineState.HAS_QUARTER:
             print("Your quarter is being ejected!")
