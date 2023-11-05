@@ -14,7 +14,7 @@ class GumballMachine:
     def __init__(self, number_of_gumballs: int = 0):
         if not isinstance(number_of_gumballs, int):
             raise TypeError
-        if not number_of_gumballs > 0:
+        if not number_of_gumballs > -1:
             raise ValueError
 
         self.number_of_gumballs = number_of_gumballs
