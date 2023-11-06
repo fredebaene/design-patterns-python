@@ -8,7 +8,7 @@ class DuckAdapter:
     def __init__(self, duck: Duck):
         if not isinstance(duck, Duck):
             raise TypeError(
-                "The argument passed to 'duck' must be of type 'Duck'."
+                "The argument passed to `duck` must be of type `Duck`."
             )
         self.duck: Duck = duck
 

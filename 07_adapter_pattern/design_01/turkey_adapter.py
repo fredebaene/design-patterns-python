@@ -8,7 +8,7 @@ class TurkeyAdapter:
     def __init__(self, turkey: Turkey):
         if not isinstance(turkey, Turkey):
             raise TypeError(
-                "The argument passed to 'turkey' must be of type 'Turkey'."
+                "The argument passed to `turkey` must be of type `Turkey`."
             )
         self.turkey: Turkey = turkey
 
@@ -16,4 +16,4 @@ class TurkeyAdapter:
         self.turkey.gobble()
 
     def fly(self) -> None:
-        self.turkey.fly() 
+        self.turkey.fly()
