@@ -62,6 +62,9 @@ class Projector:
     def widescreen_mode(self) -> None:
         print("Setting projector to widescreen mode ...")
 
+    def set_input(self, device: Literal["CD", "DVD"]) -> None:
+        print(f"Setting input to {device} player for projector ...")
+
 
 class DvdPlayer:
     def on(self) -> None:
