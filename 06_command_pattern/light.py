@@ -3,7 +3,7 @@ class Light:
         self.id = id
 
     def switch_on(self) -> None:
-        print(f"Light : {self.id} | Switching on...")
+        print(f"LIGHT : {self.id} | Switching on...")
 
     def switch_off(self) -> None:
-        print(f"Light : {self.id} | Switching off...")
+        print(f"LIGHT : {self.id} | Switching off...")
