@@ -3,6 +3,7 @@ from light import Light
 from garage import Garage
 
 
+@runtime_checkable
 class ICommand(Protocol):
     def execute(self) -> None:
         ...
