@@ -1,0 +1,25 @@
+---
+title: "Pre-processing and filtering of Spatial Transcriptomics data"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+    code-fold: true
+jupyter: python3
+---
+
+# Custom Analysis Report for P2543
+
+## Introduction
+
+This report contains the results of the custom 
+analysis for P2543 (BMS IO). The first sections 
+outline the analysis of the clinical and IHC data.
+
+## Clinical Data
+
+```{python}
+print("hello")
+```
+
+

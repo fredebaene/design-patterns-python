@@ -2,6 +2,32 @@ from abc import ABC, abstractmethod
 from typing import Literal
 
 
+class Amplifier:
+    def on(self) -> None:
+        print("Turning on amplifier ...")
+
+    def off(self) -> None:
+        print("Turning off amplifier ...")
+
+    def set_cd(self) -> None:
+        print("Setting input to CD player for amplifier ...")
+
+    def set_dvd(self) -> None:
+        print("Setting input to DVD player for amplifier ...")
+
+    def set_stereo_sound(self) -> None:
+        print("Enabling stereo sound for amplifier ...")
+
+    def set_surround_sound(self) -> None:
+        print("Enabling surround sound for amplifier ...")
+
+    def set_tuner(self) -> None:
+        print("Setting tuner for amplifier ...")
+
+    def set_volume(self, volume: float) -> None:
+        print(f"Setting volume to {volume} on amplifier ...")
+
+
 class TheaterLights:
     def on(self) -> None:
         print("Turning on theater lights ...")
@@ -110,29 +136,3 @@ class CdPlayer:
 
     def stop(self) -> None:
         print("Stopping CD in CD player ...")
-    
-
-class Amplifier:
-    def on(self) -> None:
-        print("Turning on amplifier ...")
-
-    def off(self) -> None:
-        print("Turning off amplifier ...")
-
-    def set_cd(self) -> None:
-        print("Setting input to CD player for amplifier ...")
-
-    def set_dvd(self) -> None:
-        print("Setting input to DVD player for amplifier ...")
-
-    def set_stereo_sound(self) -> None:
-        print("Enabling stereo sound for amplifier ...")
-
-    def set_surround_sound(self) -> None:
-        print("Enabling surround sound for amplifier ...")
-
-    def set_tuner(self) -> None:
-        print("Setting tuner for amplifier ...")
-
-    def set_volume(self, volume: float) -> None:
-        print(f"Setting volume to {volume} on amplifier ...")
